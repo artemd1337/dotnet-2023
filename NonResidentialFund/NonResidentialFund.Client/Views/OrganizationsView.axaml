@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NonResidentialFund.Client.Views.OrganizationsView">
+	<UserControl.Styles>
+		<StyleInclude Source="/NonResidentialFundStyles.axaml"/>
+	</UserControl.Styles>
+	<DockPanel>
+		<Grid Classes="MainGrid" RowDefinitions="Auto, *">
+			<StackPanel Grid.Row="0" Orientation="Horizontal">
+				<Button Classes="ToolButton" Command="{Binding OnAddOrganizationCommand}">
+					<Image Source="/Assets/add.png"/>
+				</Button>
+				<Button Classes="ToolButton" Command="{Binding OnUpdateOrganizationCommand}">
+					<Image Source="/Assets/update.png"/>
+				</Button>
+				<Button Classes="ToolButton" Command="{Binding OnDeleteOrganizationCommand}">
+					<Image Source="/Assets/delete.png"/>
+				</Button>
+			</StackPanel>
+			<DataGrid Grid.Row="1" AutoGenerateColumns="False"
+						Items="{Binding Organizations}" SelectedItem="{Binding SelectedOrganization}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="ID" Binding="{Binding OrganizationId}"/>
+					<DataGridTextColumn Header="Название" Binding="{Binding OrganizationName}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Grid>
+		<Button DockPanel.Dock="Bottom" Command="{Binding Cancel}">Cancel</Button>
+		</DockPanel>
+</UserControl>

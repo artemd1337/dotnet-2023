@@ -43,9 +43,9 @@ public partial class App : Application
             });
             Locator.CurrentMutable.RegisterConstant(new ApiWrapper());
             Locator.CurrentMutable.RegisterConstant(config.CreateMapper(), typeof(IMapper));
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new MainWindowSecond
             {
-                DataContext = new MainWindowViewModel()
+                DataContext = new MainWindowSecondViewModel()
             };
         }
 
