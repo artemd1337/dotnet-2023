@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.VisualBasic;
-using NonResidentialFund.Client.Views;
 using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
@@ -9,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 
 namespace NonResidentialFund.Client.ViewModels;
+
 public class OrganizationsViewModel : TableViewModelBase
 {
     public ObservableCollection<OrganizationViewModel> Organizations { get; } = new();
@@ -30,8 +29,6 @@ public class OrganizationsViewModel : TableViewModelBase
     {
         _apiClient = Locator.Current.GetService<ApiWrapper>();
         _mapper = Locator.Current.GetService<IMapper>();
-
-        ShowDialog = new Interaction<OrganizationViewModel, OrganizationViewModel?>();
 
         OnAddOrganizationCommand = ReactiveCommand.CreateFromTask(async () =>
         {
